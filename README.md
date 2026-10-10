@@ -1,2 +1,3 @@
-# nanobrows
-NanoBrows — временная копия сайта (GitHub Pages)
+# NanoBrows — временная копия сайта
+
+Временное размещение на GitHub Pages, пока не заработал хостинг nanobrows.az. Закрыто от поиска.
