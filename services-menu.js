@@ -79,3 +79,27 @@
         target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     });
 })();
+
+/* Фото салона: стрелки и счётчик «1 / 3»; пальцем лента листается сама */
+(function () {
+    [].forEach.call(document.querySelectorAll(".salon-ph"), function (box) {
+        var strip = box.querySelector(".salon-ph-strip");
+        var prev = box.querySelector(".salon-ph-prev"), next = box.querySelector(".salon-ph-next");
+        var count = box.querySelector(".salon-ph-count");
+        if (!strip || !prev || !next) return;
+        var n = strip.children.length;
+        var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        function index() { return Math.round(strip.scrollLeft / strip.clientWidth); }
+        function update() {
+            var i = index();
+            if (count) count.textContent = (i + 1) + " / " + n;
+            prev.disabled = i <= 0;
+            next.disabled = i >= n - 1;
+        }
+        function go(d) { strip.scrollTo({ left: (index() + d) * strip.clientWidth, behavior: still ? "auto" : "smooth" }); }
+        prev.addEventListener("click", function () { go(-1); });
+        next.addEventListener("click", function () { go(1); });
+        strip.addEventListener("scroll", update, { passive: true });
+        update();
+    });
+})();
