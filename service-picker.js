@@ -90,7 +90,7 @@
         setActive(list.querySelector(".is-sel") || opts()[0]);
     }
     function close(focusBtn) {
-        pop.classList.remove("is-in");
+        pop.classList.remove("is-in", "is-sheet");
         pop.hidden = true;
         btn.setAttribute("aria-expanded", "false");
         document.documentElement.classList.remove("book-open");

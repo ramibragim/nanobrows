@@ -3300,3 +3300,23 @@ section[id] { scroll-margin-top: 88px; }
 .ft-copy { color: #8E887E; }
 .crumbs > span:last-child { color: #A39D93; }
 .kc-field small { color: #A39D93; }
+
+/* Спрятанное — спрятано всегда. Без этого правило вида «.m-pop.is-sheet { display: flex }»
+   перебивало [hidden], и на телефоне после выбора услуги оставалось затемнение на весь экран. */
+[hidden] { display: none !important; }
+
+/* сертификаты на странице курса */
+.kc-ph--cert { background: #F2F0EC; aspect-ratio: auto; }
+.kc-ph--cert a { display: block; }
+.kc-ph--cert img { width: 100%; height: auto; display: block; }
+.kc-ph--cert figcaption { padding: 8px 12px; font-size: 12px; color: #6E685E; background: #F2F0EC; }
+.kc-cert-thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kc-cert-thumb { display: flex; flex-direction: column; gap: 6px; color: #E3C27E; text-decoration: none; font-size: 14px; }
+.kc-cert-thumb img { width: 100%; height: auto; display: block; border-radius: 4px; }
+.kc-cert-thumb span { min-height: 24px; }
+.kc-cert-thumb:hover span { text-decoration: underline; text-underline-offset: 3px; }
+.kc-cert-thumb:focus-visible, .kc-ph--cert a:focus-visible { outline: 4px solid rgba(227,194,126,.55); outline-offset: 2px; }
+/* без анимаций — если человек выключил их в настройках телефона */
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge, .hero-badge::before, .hero-title .line span, .hero-description, .hero-stats, .cta-group, .phi-slider, .scroll-indicator span { animation: none !important; }
+}
