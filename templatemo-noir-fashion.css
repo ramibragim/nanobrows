@@ -3289,3 +3289,14 @@ section[id] { scroll-margin-top: 88px; }
   .kc-pack .kc-ph--kitsm { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .kc-more summary::after { transition: none; } }
+
+/* страница 404 */
+.nf { min-height: 70vh; max-width: 720px; margin: 0 auto; padding: 160px 24px 100px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.nf-title { margin: 0; font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(36px, 6vw, 60px); color: #F3F0EA; }
+.nf-text { margin: 0; font-size: 17px; line-height: 1.6; color: #B8B1A6; }
+.nf-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
+
+/* контраст мелкого серого текста — не ниже 4,5:1 */
+.ft-copy { color: #8E887E; }
+.crumbs > span:last-child { color: #A39D93; }
+.kc-field small { color: #A39D93; }
