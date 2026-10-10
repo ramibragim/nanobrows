@@ -3241,3 +3241,4 @@ footer {
 /* слайдер: постер услуги вместо пустой рамки */
 .phi-plate-media.has-photo { background-size: cover; background-position: center top; background-color: #0F0D0B; }
 .phi-plate-media.has-photo::after { content: none; }
+section[id] { scroll-margin-top: 88px; }

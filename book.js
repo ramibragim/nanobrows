@@ -114,3 +114,24 @@
     var q = new URLSearchParams(location.search).get("salon");
     if (q && data.salons.some(function (s) { return s.slug === q; })) current = q;
 })();
+
+/* Переход на раздел с другой страницы (index.html#masters). Браузер прыгает
+   к разделу сразу, а потом догружаются шрифты и картинки, страница вытягивается,
+   и человек оказывается выше нужного места. После загрузки доводим ещё раз —
+   если он сам ещё не начал листать. */
+(function () {
+    if (!location.hash) return;
+    var target;
+    try { target = document.querySelector(location.hash); } catch (e) { return; }
+    if (!target) return;
+    var touched = false;
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+        addEventListener(ev, function () { touched = true; }, { once: true, passive: true });
+    });
+    function go() { if (!touched) target.scrollIntoView({ block: "start", behavior: "instant" }); }
+    addEventListener("load", function () {
+        go();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(go);
+        setTimeout(go, 500);
+    });
+})();
