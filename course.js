@@ -26,12 +26,20 @@
         document.documentElement.classList.add("book-open");
         form.querySelector('input[name="name"]').focus();
     }
-    function close() {
-        dlg.close();
-    }
-    dlg.addEventListener("close", function () {
+    /* прокрутку возвращаем сразу при закрытии, не дожидаясь события «close»:
+       браузер присылает его с задержкой (в фоновой вкладке — не сразу) */
+    function cleanup() {
+        if (!document.documentElement.classList.contains("book-open")) return;
         document.documentElement.classList.remove("book-open");
         if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    function close() {
+        dlg.close();
+        cleanup();
+    }
+    dlg.addEventListener("close", cleanup);      // закрытие клавишей Esc
+    dlg.addEventListener("cancel", function () { // Esc: снимаем блокировку сразу
+        document.documentElement.classList.remove("book-open");
     });
 
     document.addEventListener("click", function (e) {

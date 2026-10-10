@@ -85,7 +85,8 @@
         pop.classList.toggle("is-sheet", mobile.matches);
         btn.setAttribute("aria-expanded", "true");
         if (mobile.matches) document.documentElement.classList.add("book-open");
-        requestAnimationFrame(function () { pop.classList.add("is-in"); });
+        void pop.offsetWidth;
+        pop.classList.add("is-in");
         list.focus({ preventScroll: true });
         setActive(list.querySelector(".is-sel") || opts()[0]);
     }

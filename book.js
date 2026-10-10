@@ -65,7 +65,9 @@
         render(service);
         sheet.hidden = false;
         document.documentElement.classList.add("book-open");
-        requestAnimationFrame(function () { sheet.classList.add("is-in"); });
+        // плавное появление без ожидания кадра: окно не должно остаться прозрачным, если кадр задержится
+        void sheet.offsetWidth;
+        sheet.classList.add("is-in");
         var first = sheet.querySelector(".book-salon");
         if (first) first.focus();
     }

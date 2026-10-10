@@ -3318,7 +3318,7 @@ section[id] { scroll-margin-top: 88px; }
 .kc-cert-thumb:focus-visible, .kc-ph--cert a:focus-visible { outline: 4px solid rgba(227,194,126,.55); outline-offset: 2px; }
 /* без анимаций — если человек выключил их в настройках телефона */
 @media (prefers-reduced-motion: reduce) {
-  .hero-badge, .hero-badge::before, .hero-title .line span, .hero-description, .hero-stats, .cta-group, .phi-slider, .scroll-indicator span { animation: none !important; }
+  nav, .hero-badge, .hero-badge::before, .hero-title .line span, .hero-description, .hero-stats, .cta-group, .phi-slider, .scroll-indicator span { animation: none !important; }
 }
 
 /* фото салона в карточке */
@@ -3338,3 +3338,6 @@ section[id] { scroll-margin-top: 88px; }
 .salon-ph--empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #8E887E; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; border: 1px dashed rgba(185,139,60,.35); border-left: 0; border-right: 0; border-top: 0; }
 .salon-ph--empty svg { width: 26px; height: 26px; color: #8A6A2E; }
 @media (max-width: 760px) { .salon-ph { margin: -22px -22px 4px; } }
+/* окна видимы сразу, появляются только сдвигом: прозрачность не должна зависеть от того, проиграется ли переход */
+@media (min-width: 769px) { .book-panel, .book-sheet.is-in .book-panel { opacity: 1; } }
+.m-pop-panel, .m-pop.is-in .m-pop-panel { opacity: 1; }
